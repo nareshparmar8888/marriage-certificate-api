@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const variables = require('../config/variables.json')
 
 let marriageDetailSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        lowercase: true,
-        unique: true
-    },
+    // name: {
+    //     type: String,
+    //     required: true,
+    //     lowercase: true,
+    //     unique: true
+    // },
     location: {
         type: String,
         default: '',
@@ -16,6 +17,11 @@ let marriageDetailSchema = new Schema({
     marriageDate: {
         type: Date,
         default: null,
+        required: true
+    },
+    marriageAddress: {
+        type: String,
+        default: '',
         required: true
     },
     // Husband Detail Started
@@ -70,7 +76,6 @@ let marriageDetailSchema = new Schema({
     husbandGuardianAge: {
         type: Number,
         default: 0,
-        required: true,
     },
     husbandGuardianLocation: {
         type: String,
@@ -115,7 +120,6 @@ let marriageDetailSchema = new Schema({
     wifeAge: {
         type: Number,
         default: 0,
-        required: true,
     },
     wifeStatusOfBrideAtTime: {
         type: Number,
@@ -163,6 +167,7 @@ let marriageDetailSchema = new Schema({
     wifeMobileNumber: {
         type: Number,
         default: 0,
+        required: true,
     },
     wifeEmail: {
         type: String,
@@ -208,7 +213,6 @@ let marriageDetailSchema = new Schema({
     witnessFirstAge: { 
         type: Number,
         default: 0,
-        required: true
     },
     witnessFirstAddress: { 
         type: String,
@@ -229,13 +233,16 @@ let marriageDetailSchema = new Schema({
     witnessSecondAge: { 
         type: Number,
         default: 0,
-        required: true
     },
     witnessSecondAddress: { 
         type: String,
         default: '',
         required: true
     },
+    applicationStatus: {
+        type: String,
+        enum: variables.applicationStatus
+    }
 }, {timestamps: true});
 
 module.exports = mongoose.model('MarriageDetail', marriageDetailSchema);
