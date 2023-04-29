@@ -1,0 +1,7 @@
+{
+    "common": {
+        "required": "The :attribute field is required."        
+    },
+
+    "invalid_password": "Please enter valid password."
+}
